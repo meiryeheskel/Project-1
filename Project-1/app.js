@@ -38,7 +38,7 @@ switch (selectedShape) {
         ShapeBuilder(mat, TriangleSideLength, TriangleSideLength);
         Print(mat);
         document.write("Triangle Perimeter: " + TriangleSideLength * (2 + Math.sqrt(2)) + "<br/>Triangle Area:" + 0.5 * TriangleSideLength * TriangleSideLength);
-        break;
+        break; // the perimeter of this triangle equals: [X + X + X * sqrt(2)] or [X * (2 + sqrt(2))]
     case 4:// diamond selected
         var diamondSideLength = Number(prompt("Please enter diamond side length:"));
         if (!ValidNumber(diamondSideLength))
@@ -48,8 +48,8 @@ switch (selectedShape) {
         mat = new Array(diamondSideLength * 2 - 1); // the mat dimension that conatins the diamond is diamondSideLength * 2 - 1
         Diamond(mat, diamondSideLength);
         Print(mat);
-        document.write("Diamond Perimeter: " + diamondSideLength * 4 + "<br/>Diamond Area:" + 0.5 * (4 * Math.pow(diamondSideLength, 2) - 4 * diamondSideLength + 1));
-        break;
+        document.write("Diamond Perimeter: " + diamondSideLength * 4 + "<br/>Diamond Area:" + 0.5 * Math.pow((2 * diamondSideLength - 1), 2));
+        break; // the diamond's area equals half of the diamond's diagonals product
     default: document.write(" Error. Please select 1 or 2 or 3 or 4 for the shape type.");
 }
 function ShapeBuilder(mat, height, width) {
@@ -153,7 +153,7 @@ function ContentOfShape() {
     }
 }
 function ValidNumber(input) {
-    if (isNaN(input) || Math.floor(input) != input || input <= 0) {
+    if (isNaN(input) || Math.floor(input) != input || input <= 0 || input > 100) {
         document.write("Error. Please enter a positive integer number.");
         return false;
     }
